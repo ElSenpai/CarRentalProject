@@ -3,9 +3,9 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
-using Microsoft.EntityFrameworkCore;
+
 using System.Linq;
-using System.Linq.Expressions;
+
 using System.Collections.Generic;
 using System.Text;
 
