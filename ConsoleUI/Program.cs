@@ -18,8 +18,8 @@ namespace ConsoleUI
             //carManager.Add(new Car { Id = 6, CarName = "R", BrandId = 1, ColorId = 2, DailyPrice = 1000, ModelYear = 2020 });
             //carManager.Add(new Car { Id = 3, CarName = "Mustang", BrandId = 2, ColorId = 1, DailyPrice = 700, ModelYear = 1970 });
             //carManager.Add(new Car { Id = 4, CarName = "Yaris", BrandId = 3, ColorId = 3, DailyPrice = 70, ModelYear = 2000 });
-            //carManager.Add(new Car { Id = 5, CarName = "gibi", BrandId = 2, ColorId = 1, DailyPrice = 170, ModelYear = 2010 });
-            // colorManager.Add(new Color { ColorId = 4, ColorName = "Mavi" });
+            //carManager.Add(new Car { Id = 9, CarName = "i", BrandId = 2, ColorId = 1, DailyPrice = 0, ModelYear = 2010 });
+            //colorManager.Add(new Color { ColorId = 4, ColorName = "Mavi" });
             //colorManager.Add(new Color { ColorId = 4, ColorName = "Mor" });
             //colorManager.Add(new Color { ColorId = 2, ColorName = "Kırmızı" });
             //colorManager.Add(new Color { ColorId = 3, ColorName = "Bayaz" });
@@ -31,11 +31,12 @@ namespace ConsoleUI
 
             //carManager.Update(new Car { Id = 2, CarName = "R8", BrandId = 1, ColorId = 2, DailyPrice = 1000, ModelYear = 2020 });
             //colorManager.Update(new Color { ColorId = 3, ColorName = "Beyaz" });
-           // brandManager.Update(new Brand { BrandId = 3, BrandName = "Toyota" });
+            // brandManager.Update(new Brand { BrandId = 3, BrandName = "Toyota" });
 
-             //carManager.Delete(new Car {Id=6 });
-            //_=colorManager.Delete(new Color {ColorId=4 }).Message;
+            //carManager.Delete(new Car {Id=8 });
+            //colorManager.Delete(new Color {ColorId=5 });
             //brandManager.Delete(new Brand { BrandId=5});
+            //Console.WriteLine(colorManager.Add(new Color { ColorId=5,ColorName="Mavi"}).Message);
             foreach (var colors in colorManager.GetAllColors().Data)
             {
                 Console.WriteLine(colors.ColorName);
@@ -50,6 +51,7 @@ namespace ConsoleUI
             foreach (var brands in brandManager.GetAllBrands().Data)
             {
                 Console.WriteLine(brands.BrandName);
+                
             }
 
             Console.WriteLine("-------------");
@@ -67,14 +69,19 @@ namespace ConsoleUI
             
 
             Console.WriteLine("----------------------");
-
-
-
-
-
-
-
+             
+            
            
+                
+            
+
+
+
+
+
+
+
+
         }
     }
 }
