@@ -9,7 +9,7 @@ namespace Business.Constants
         public static string Added = "Ekleme işlemi gerçekleşti";
         public static string Deleted = "Silme işlemi gerçekleşti";
         public static string Updated = "Güncelleme işlemi gerçekleşti";
-
+        
 
 
         public static string ColorsListed = "Renkler listelendi";

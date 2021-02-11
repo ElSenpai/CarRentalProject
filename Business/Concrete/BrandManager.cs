@@ -18,10 +18,7 @@ namespace Business.Concrete
         }
         public IResult Add(Brand brand)
         {
-            if (brand.BrandName==brand.BrandName)
-            {
-                return new ErrorResult(Messages.BrandAddInvalid);
-            }
+            
             _brandDal.Add(brand);
             return new SuccessResult(Messages.Added);
         }

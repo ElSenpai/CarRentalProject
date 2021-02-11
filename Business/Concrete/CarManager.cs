@@ -20,7 +20,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Id==car.Id)
+            if (car.CarName.Length<2)
             {
                 new ErrorResult(Messages.CantAdded);
             }

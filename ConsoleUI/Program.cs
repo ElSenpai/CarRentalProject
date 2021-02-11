@@ -15,11 +15,11 @@ namespace ConsoleUI
 
 
             //carManager.Add(new Car { Id = 1, CarName = "A3", BrandId = 1, ColorId = 1, DailyPrice = 100, ModelYear = 2005 });
-            //carManager.Add(new Car { Id = 2, CarName = "R8 LMS Gt3", BrandId = 1, ColorId = 2, DailyPrice = 1000, ModelYear = 2020 });
+            //carManager.Add(new Car { Id = 6, CarName = "R", BrandId = 1, ColorId = 2, DailyPrice = 1000, ModelYear = 2020 });
             //carManager.Add(new Car { Id = 3, CarName = "Mustang", BrandId = 2, ColorId = 1, DailyPrice = 700, ModelYear = 1970 });
             //carManager.Add(new Car { Id = 4, CarName = "Yaris", BrandId = 3, ColorId = 3, DailyPrice = 70, ModelYear = 2000 });
             //carManager.Add(new Car { Id = 5, CarName = "gibi", BrandId = 2, ColorId = 1, DailyPrice = 170, ModelYear = 2010 });
-            //colorManager.Add(new Color { ColorId = 1, ColorName = "Siyah" });
+            // colorManager.Add(new Color { ColorId = 4, ColorName = "Mavi" });
             //colorManager.Add(new Color { ColorId = 4, ColorName = "Mor" });
             //colorManager.Add(new Color { ColorId = 2, ColorName = "Kırmızı" });
             //colorManager.Add(new Color { ColorId = 3, ColorName = "Bayaz" });
@@ -33,33 +33,33 @@ namespace ConsoleUI
             //colorManager.Update(new Color { ColorId = 3, ColorName = "Beyaz" });
            // brandManager.Update(new Brand { BrandId = 3, BrandName = "Toyota" });
 
-            // carManager.Delete(new Car {Id=5 });
-            //colorManager.Delete(new Color {ColorId=4 });
+             //carManager.Delete(new Car {Id=6 });
+            //_=colorManager.Delete(new Color {ColorId=4 }).Message;
             //brandManager.Delete(new Brand { BrandId=5});
-            foreach (var colors in colorManager.GetAllColors())
+            foreach (var colors in colorManager.GetAllColors().Data)
             {
                 Console.WriteLine(colors.ColorName);
             }
             Console.WriteLine("----");
-            foreach (var cars in carManager.GetAllCars())
+            foreach (var cars in carManager.GetAllCars().Data)
             {
                 Console.WriteLine(cars.CarName);
             }
             Console.WriteLine("----");
 
-            foreach (var brands in brandManager.GetAllBrands())
+            foreach (var brands in brandManager.GetAllBrands().Data)
             {
                 Console.WriteLine(brands.BrandName);
             }
 
             Console.WriteLine("-------------");
-            Console.WriteLine(carManager.GetByCarId(1).CarName);
-            Console.WriteLine(colorManager.GetByColorId(2).ColorName);
-            Console.WriteLine(brandManager.GetByBrandId(1).BrandName);
+            Console.WriteLine(carManager.GetByCarId(1).Data.CarName);
+            Console.WriteLine(colorManager.GetByColorId(2).Data.ColorName);
+            Console.WriteLine(brandManager.GetByBrandId(1).Data.BrandName);
             Console.WriteLine("-----------");
 
 
-            foreach (var cars in carManager.GetCarDetailDtos())
+            foreach (var cars in carManager.GetCarDetailDtos().Data)
             {
                // Console.WriteLine(cars.CarName+ "  " + cars.BrandName+ "  " + cars.ColorName+ "  " + cars.DailyPrice);
                Console.WriteLine("{0} {1}  {2}  {3}",cars.CarName,cars.BrandName,cars.ColorName,cars.DailyPrice);

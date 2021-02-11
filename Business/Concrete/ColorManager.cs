@@ -18,12 +18,11 @@ namespace Business.Concrete
         }
         public IResult Add(Color color)
         {
-            if (color.ColorName==color.ColorName)
-            {
-                return new ErrorResult(Messages.ColorAddInvalid);
-            }
+            
             _colorDal.Add(color);
+
             return new SuccessResult(Messages.Added);
+            
         }
 
         public IResult Delete(Color color)
