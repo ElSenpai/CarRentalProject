@@ -44,7 +44,7 @@ namespace Business.Concrete
 
         public IDataResult<Color> GetByColorId(int colorId)
         {
-            return new SuccessDataResult<Color> (_colorDal.Get(o=>o.ColorId==colorId));
+            return new SuccessDataResult<Color> (_colorDal.Get(o=>o.Id==colorId));
         }
 
         public IResult Update(Color color)
