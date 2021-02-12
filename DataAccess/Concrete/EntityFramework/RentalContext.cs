@@ -23,13 +23,14 @@ namespace DataAccess.Concrete.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Rental>().Property(p => p.Id).HasColumnName("RentID");
-            modelBuilder.Entity<User>().Property(p => p.Id).HasColumnName("UserID");
-            modelBuilder.Entity<Customer>().Property(p => p.CustomerId).HasColumnName("CustomerID");
-            modelBuilder.Entity<Car>().Property(p => p.Id).HasColumnName("CarID");
-            modelBuilder.Entity<Color>().Property(p => p.Id).HasColumnName("ColorID");
-            modelBuilder.Entity<Brand>().Property(p => p.Id).HasColumnName("BrandID");
-        } 
+            modelBuilder.Entity<Rental>().Property(r => r.Id).HasColumnName("RentID");
+            modelBuilder.Entity<User>().Property(u => u.Id).HasColumnName("UserID");
+            modelBuilder.Entity<Customer>().Property(cu => cu.UserID).HasColumnName("UserID");
+            modelBuilder.Entity<Car>().Property(c => c.Id).HasColumnName("CarID");
+            modelBuilder.Entity<Color>().Property(co => co.Id).HasColumnName("ColorID");
+            modelBuilder.Entity<Brand>().Property(b => b.Id).HasColumnName("BrandID");
+            modelBuilder.Entity<Customer>().HasKey(Cu => Cu.UserID);
+        }
 
     }
 }

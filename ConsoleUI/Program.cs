@@ -16,12 +16,12 @@ namespace ConsoleUI
             //RentTest();
             RentDetailTest();
 
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            //Console.WriteLine(rentalManager.Rent(new Rental { Id = 6, CarId = 3, CustomerId = 1, RentDate = DateTime.Now }).Message);
 
 
-            
 
-
-         
         }
         private static void RentDetailTest()
         {
@@ -44,17 +44,17 @@ namespace ConsoleUI
             userManager.Add(new User { Id = 4, FirstName = "Kübra", LastName = "Terzi", Email = "Kubra@kodlama.io", Password = "k7712T1122" });
             userManager.Add(new User { Id = 5, FirstName = "Murat", LastName = "Kurtboğan", Email = "Murat@kodlama.io", Password = "MK12_Kurt" });
 
-            customerManager.Add(new Customer { UserId = 1, CustomerId = 1, CompanyName = "Kodlamaİo" });
-            customerManager.Add(new Customer { UserId = 2, CustomerId = 2, CompanyName = "null" });
-            customerManager.Add(new Customer { UserId = 3, CustomerId = 3, CompanyName = "Google" });
-            customerManager.Add(new Customer { UserId = 4, CustomerId = 4, CompanyName = "Apple" });
-            customerManager.Add(new Customer { UserId = 5, CustomerId = 5, CompanyName = "Microsoft" });
+            customerManager.Add(new Customer { UserID = 1,  CompanyName = "Kodlamaİo" });
+            customerManager.Add(new Customer { UserID = 2,  CompanyName = "null" });
+            customerManager.Add(new Customer { UserID = 3,  CompanyName = "Google" });
+            customerManager.Add(new Customer { UserID = 4,  CompanyName = "Apple" });
+            customerManager.Add(new Customer { UserID = 5,  CompanyName = "Microsoft" });
 
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 1, CarId = 1, CustomerId = 1, UserId = 1, RentDate = DateTime.Now }).Message);
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 2, CarId = 2, CustomerId = 2, UserId = 2, RentDate = DateTime.Now }).Message);
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 3, CarId = 3, CustomerId = 3, UserId = 3, RentDate = DateTime.Now }).Message);
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 4, CarId = 4, CustomerId = 4, UserId = 4, RentDate = DateTime.Now }).Message);
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 15, CarId = 5, CustomerId = 5, UserId = 5, RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 1, CarId = 1, CustomerId = 1,  RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 2, CarId = 2, CustomerId = 2, RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 3, CarId = 3, CustomerId = 3, RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 4, CarId = 4, CustomerId = 4, RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 15, CarId = 5, CustomerId = 5, RentDate = DateTime.Now }).Message);
         }
         private static void JoinTest()
         {
