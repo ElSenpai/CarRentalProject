@@ -18,9 +18,9 @@ namespace ConsoleUI
 
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            //Console.WriteLine(rentalManager.Rent(new Rental { Id = 6, CarId = 3, CustomerId = 1, RentDate = DateTime.Now }).Message);
+            //Console.WriteLine(rentalManager.Rent(new Rental { Id = 5, CarId = 5, CustomerId = 5, RentDate = DateTime.Now }).Message);
 
-
+            //Console.WriteLine(rentalManager.Delete(new Rental { Id=5}).Message);
 
         }
         private static void RentDetailTest()

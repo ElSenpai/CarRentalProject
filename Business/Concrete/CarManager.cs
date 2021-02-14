@@ -20,10 +20,10 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.CarName.Length<2&&car.DailyPrice>=0)
+            if (car.CarName.Length<2&&car.DailyPrice==0)
             {
                 
-                    new ErrorResult(Messages.CantAdded); 
+                   return new ErrorResult(Messages.CantAdded); 
                 
             }
             _carDal.Add(car);

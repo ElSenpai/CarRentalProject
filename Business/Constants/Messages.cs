@@ -20,7 +20,7 @@ namespace Business.Constants
         public static string CustomerListed = "Müşteri Listelendi";
         public static string ReturnDateNull = "Araba mevcut değil";
 
-
+        public static string CantDeleted = "Silme başarısız";
 
 
         public static string ColorsListed = "Renkler listelendi";

@@ -25,8 +25,20 @@ namespace Business.Concrete
 
         public IResult Delete(Customer customer)
         {
+            //var results = _customerDal.GetCustomerDetails();
+            //foreach (var result in results)
+            //{
+            //    if (result.CustomerId!=result.UserId )
+            //    {
+                     
+            //        return new ErrorResult(Messages.CantDeleted);
+            //    }
+            //}
             _customerDal.Delete(customer);
+
             return new SuccessResult(Messages.Deleted);
+                
+           
         }
 
         public IDataResult<List<Customer>> GetAllCustomers()
