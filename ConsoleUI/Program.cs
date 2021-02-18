@@ -22,6 +22,24 @@ namespace ConsoleUI
 
             //Console.WriteLine(rentalManager.Delete(new Rental { Id=5}).Message);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
         private static void RentDetailTest()
         {
@@ -54,7 +72,7 @@ namespace ConsoleUI
             Console.WriteLine(rentalManager.Rent(new Rental { Id = 2, CarId = 2, CustomerId = 2, RentDate = DateTime.Now }).Message);
             Console.WriteLine(rentalManager.Rent(new Rental { Id = 3, CarId = 3, CustomerId = 3, RentDate = DateTime.Now }).Message);
             Console.WriteLine(rentalManager.Rent(new Rental { Id = 4, CarId = 4, CustomerId = 4, RentDate = DateTime.Now }).Message);
-            Console.WriteLine(rentalManager.Rent(new Rental { Id = 15, CarId = 5, CustomerId = 5, RentDate = DateTime.Now }).Message);
+            Console.WriteLine(rentalManager.Rent(new Rental { Id = 5, CarId = 5, CustomerId = 5, RentDate = DateTime.Now }).Message);
         }
         private static void JoinTest()
         {

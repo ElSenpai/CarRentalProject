@@ -11,29 +11,34 @@ namespace Business.Concrete
 {
    public class CustomerManager : ICustomerService
     {
+        
         ICustomerDal _customerDal;
         public CustomerManager(ICustomerDal customerDal)
         {
             _customerDal = customerDal;
         }
+       
 
         public IResult Add(Customer customer)
-        {
+        {            
+                var results = _customerDal.GetCustomerDetails();
+
+            foreach (var result in results)
+            {
+                if (result.CustomerId == customer.UserID )
+                {
+                    return new ErrorResult(Messages.CantAdded);
+
+                }
+            }
+
             _customerDal.Add(customer);
             return new SuccessResult(Messages.Added);
         }
 
         public IResult Delete(Customer customer)
         {
-            //var results = _customerDal.GetCustomerDetails();
-            //foreach (var result in results)
-            //{
-            //    if (result.CustomerId!=result.UserId )
-            //    {
-                     
-            //        return new ErrorResult(Messages.CantDeleted);
-            //    }
-            //}
+            
             _customerDal.Delete(customer);
 
             return new SuccessResult(Messages.Deleted);

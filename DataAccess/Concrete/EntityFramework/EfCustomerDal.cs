@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCustomerDal : EfEntityRepositoryBase<Customer, RentalContext>, ICustomerDal
     {
-        public List<CustomerDetailDto> GetCustomerDetails(Expression<Func<Customer, bool>> filter = null)
+        public List<CustomerDetailDto> GetCustomerDetails(Expression<Func<Customer, bool>> filter =null )
         {
             using (RentalContext context = new RentalContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CustomerDetailDto
                              {
                                  CustomerId = c.UserID,
-                                 UserId = u.Id
+                                 Id = u.Id
 
                              };
                 return result.ToList();

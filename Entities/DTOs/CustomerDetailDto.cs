@@ -6,7 +6,7 @@ namespace Entities.DTOs
 {
    public class CustomerDetailDto
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         
 
