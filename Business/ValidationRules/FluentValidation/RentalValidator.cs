@@ -15,24 +15,26 @@ namespace Business.ValidationRules.FluentValidation
     {
         public RentalValidator()
         {
+
+
+            RuleFor(r => r.CarId).NotNull();
+           // RuleFor(r => r.ReturnDate).LessThan(r => r.RentDate);
+           //RuleFor(r => r.ReturnDate).Null();
+           // RuleFor(r => r.CarId).Must(ReturnDateForCarId).WithMessage(Messages.ReturnDateNull);
             
-            RuleFor(r => r.ReturnDate).LessThan(r => r.RentDate);
-            RuleFor(r => r.ReturnDate).Null();
-            RuleFor(r => r.CarId).Must(ReturnDateForCarId).WithMessage(Messages.ReturnDateNull);
-            
-        }
+        }                             
 
-        private bool ReturnDateForCarId(int arg)
-        {
-            IRentalDal rentaldal = new EfRentalDal();
-            var result = rentaldal.GetAll(r => r.CarId == arg);
-            if (result.Count>0)
-            {
-                return false;
-            }
+        //private bool ReturnDateForCarId(int arg)
+        //{
+        //    IRentalDal rentaldal = new EfRentalDal();
+        //    var result = rentaldal.GetAll(r => r.CarId == arg);
+        //    if (result.Count>0)
+        //    {
+        //        return false;
+        //    }
 
-            return true;
+        //    return true;
 
-        }
+        //}
     }
 }
