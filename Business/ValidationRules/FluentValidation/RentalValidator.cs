@@ -17,10 +17,10 @@ namespace Business.ValidationRules.FluentValidation
         {
 
 
-           // RuleFor(r => r.CarId).NotNull();
-            RuleFor(r => r.ReturnDate).LessThan(r => r.RentDate);
-           RuleFor(r => r.ReturnDate).Null();
-            RuleFor(r => r.CarId).Must(ReturnDateForCarId).WithMessage(Messages.ReturnDateNull);
+           RuleFor(r => r.CarId).NotNull();
+            //RuleFor(r => r.ReturnDate).LessThan(r => r.RentDate);
+            //RuleFor(r => r.ReturnDate).Null();
+            //RuleFor(r => r.CarId).Must(ReturnDateForCarId).WithMessage(Messages.ReturnDateNull);
             
         }                             
 

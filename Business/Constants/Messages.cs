@@ -28,6 +28,8 @@ namespace Business.Constants
         public static string CarsListed = "Arabalar listelendi";
         public static string ColorAddInvalid = "Var olan Renk eklenemez";
         public static string BrandAddInvalid = "Var olan Marka eklenemez";
+        public static string ImagesAdded = "Görüntü Eklendi";
+        public static string ImagesCantAdded = "Ekleme başarısız";
 
 
 
