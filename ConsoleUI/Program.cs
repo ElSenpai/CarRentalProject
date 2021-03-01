@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using Business.Constants;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -14,7 +15,7 @@ namespace ConsoleUI
             //CrudTest();
             //JoinTest();
             //RentTest();
-            RentDetailTest();
+            //RentDetailTest();
 
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
@@ -57,11 +58,11 @@ namespace ConsoleUI
             UserManager userManager = new UserManager(new EfUserDal());
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            userManager.Add(new User { Id = 1, FirstName = "Engin", LastName = "Demirog", Email = "Engin@kodlama.io", Password = "ngn123dmrg_" });
-            userManager.Add(new User { Id = 2, FirstName = "Ahmet Salih", LastName = "Ucar", Email = "Ahmet@kodlama.io", Password = "_hm_t123" });
-            userManager.Add(new User { Id = 3, FirstName = "Kerem", LastName = "Varış", Email = "Kerem@kodlama.io", Password = "123456k_" });
-            userManager.Add(new User { Id = 4, FirstName = "Kübra", LastName = "Terzi", Email = "Kubra@kodlama.io", Password = "k7712T1122" });
-            userManager.Add(new User { Id = 5, FirstName = "Murat", LastName = "Kurtboğan", Email = "Murat@kodlama.io", Password = "MK12_Kurt" });
+            //userManager.Add(new User { Id = 1, FirstName = "Engin", LastName = "Demirog", Email = "Engin@kodlama.io", Password = "ngn123dmrg_" });
+            //userManager.Add(new User { Id = 2, FirstName = "Ahmet Salih", LastName = "Ucar", Email = "Ahmet@kodlama.io", Password = "_hm_t123" });
+            //userManager.Add(new User { Id = 3, FirstName = "Kerem", LastName = "Varış", Email = "Kerem@kodlama.io", Password = "123456k_" });
+            //userManager.Add(new User { Id = 4, FirstName = "Kübra", LastName = "Terzi", Email = "Kubra@kodlama.io", Password = "k7712T1122" });
+            //userManager.Add(new User { Id = 5, FirstName = "Murat", LastName = "Kurtboğan", Email = "Murat@kodlama.io", Password = "MK12_Kurt" });
 
             customerManager.Add(new Customer { UserID = 1,  CompanyName = "Kodlamaİo" });
             customerManager.Add(new Customer { UserID = 2,  CompanyName = "null" });
