@@ -11,8 +11,8 @@ namespace Core.Utilities.FileUploads
     public class FileHelper
 
     {
-        private static string currentDirectory = Environment.CurrentDirectory + "\\wwwroot";
-        private static string path = "\\images\\";
+        private static string currentDirectory = Environment.CurrentDirectory + @"\wwwroot";
+        private static string path = @"\images\";
         private static string guidName = null;
         private static string type = null;
 
@@ -23,12 +23,6 @@ namespace Core.Utilities.FileUploads
 
                 guidName = Guid.NewGuid().ToString();
                 type = Path.GetExtension(file.Files.FileName);
-
-                if (!Directory.Exists(currentDirectory + path))
-                {
-                    Directory.CreateDirectory(currentDirectory + path);
-                    
-                }
 
                 using (FileStream filestream = File.Create(currentDirectory + path + guidName + type))
                 {
@@ -44,10 +38,8 @@ namespace Core.Utilities.FileUploads
         }
         public static IResult Delete(string file)
         {
-           
-            
+
             File.Delete((currentDirectory + path + file));
-            
 
             return new SuccessResult();
 
@@ -55,17 +47,14 @@ namespace Core.Utilities.FileUploads
         }
         public static IResult Update(FileTools file, string imagePath)
         {
+
             if (file.Files.Length > 0)
             {
                 guidName = Guid.NewGuid().ToString();
                 type = Path.GetExtension(file.Files.FileName);
-                File.Delete(currentDirectory + path + imagePath);
-                using (FileStream fs = File.Create(currentDirectory+ path + guidName + type))
-                {
-                    file.Files.CopyTo(fs);
-                    fs.Flush();
-                }
-
+                FileHelper.Delete(imagePath);
+                FileHelper.Add(file);
+                
                 return new SuccessResult((guidName + type));
             }
             return new ErrorResult();
