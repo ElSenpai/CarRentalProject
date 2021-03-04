@@ -16,37 +16,13 @@ namespace ConsoleUI
             //JoinTest();
             //RentTest();
             //RentDetailTest();
-
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-
-           
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
             //Console.WriteLine(rentalManager.Rent(new Rental { Id = 5, CarId = 5, CustomerId = 5, RentDate = DateTime.Now }).Message);
-
             //Console.WriteLine(rentalManager.Delete(new Rental { Id=5}).Message);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
         private static void RentDetailTest()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-
             foreach (var item in rentalManager.GetRentalDetailDtos().Data)
             {
                 Console.WriteLine("{0} {1}  {2}  {3} {4}  {5}  {6}", item.RentId, item.UserId, item.UserName, item.ReturnDate, item.RentDate, item.CarName, item.CarId);
@@ -57,13 +33,11 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             UserManager userManager = new UserManager(new EfUserDal());
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-
             //userManager.Add(new User { Id = 1, FirstName = "Engin", LastName = "Demirog", Email = "Engin@kodlama.io", Password = "ngn123dmrg_" });
             //userManager.Add(new User { Id = 2, FirstName = "Ahmet Salih", LastName = "Ucar", Email = "Ahmet@kodlama.io", Password = "_hm_t123" });
             //userManager.Add(new User { Id = 3, FirstName = "Kerem", LastName = "Varış", Email = "Kerem@kodlama.io", Password = "123456k_" });
             //userManager.Add(new User { Id = 4, FirstName = "Kübra", LastName = "Terzi", Email = "Kubra@kodlama.io", Password = "k7712T1122" });
             //userManager.Add(new User { Id = 5, FirstName = "Murat", LastName = "Kurtboğan", Email = "Murat@kodlama.io", Password = "MK12_Kurt" });
-
             customerManager.Add(new Customer { UserID = 1,  CompanyName = "Kodlamaİo" });
             customerManager.Add(new Customer { UserID = 2,  CompanyName = "null" });
             customerManager.Add(new Customer { UserID = 3,  CompanyName = "Google" });
