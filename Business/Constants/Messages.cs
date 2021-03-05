@@ -38,10 +38,6 @@ namespace Business.Constants
         public static string BrandAddInvalid = "Var olan Marka eklenemez";
         public static string ImagesAdded = "Görüntü Eklendi";
         public static string ImagesCantAdded = "Ekleme başarısız";
-
-
-
-
-
+        public static string TransactionTested = "Transaction test edildi";
     }
 }

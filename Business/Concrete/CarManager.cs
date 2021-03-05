@@ -12,6 +12,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Business.Concrete
 {
@@ -38,8 +39,10 @@ namespace Business.Concrete
         public IResult AddTransactionalTest(Car car)
         {
             _carDal.Add(car);
+            
+
             _carDal.Delete(car);
-            return new SuccessResult("Transaction test edildi");
+            return new SuccessResult(Messages.TransactionTested);
         }
 
         public IResult Delete(Car car)
