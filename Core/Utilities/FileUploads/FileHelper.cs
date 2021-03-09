@@ -13,16 +13,15 @@ namespace Core.Utilities.FileUploads
     {
         private static string currentDirectory = Environment.CurrentDirectory + @"\wwwroot";
         private static string path = @"\images\";
-        private static string guidName = null;
-        private static string type = null;
+        
 
         public static IResult Add(FileTools file)
         {
             if (file.Files.Length > 0)
             {
 
-                guidName = Guid.NewGuid().ToString();
-                type = Path.GetExtension(file.Files.FileName);
+               var guidName = Guid.NewGuid().ToString();
+              var  type = Path.GetExtension(file.Files.FileName);
 
                 using (FileStream filestream = File.Create(currentDirectory + path + guidName + type))
                 {
@@ -50,8 +49,8 @@ namespace Core.Utilities.FileUploads
 
             if (file.Files.Length > 0)
             {
-                guidName = Guid.NewGuid().ToString();
-                type = Path.GetExtension(file.Files.FileName);
+               var guidName = Guid.NewGuid().ToString();
+               var type = Path.GetExtension(file.Files.FileName);
                 FileHelper.Delete(imagePath);
                 FileHelper.Add(file);
                 

@@ -61,6 +61,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+            
             services.AddDependencyResolvers(new ICoreModule[] {
                 new CoreModule()
             });
@@ -78,8 +79,10 @@ namespace WebAPI
 
             app.UseRouting();
             app.UseStaticFiles();
-            app.UseAuthorization();
+
+            
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -30,8 +30,10 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.ImagesCantAdded);
             }
 
-           var pathResult= FileHelper.Add(file);
+            var pathResult = FileHelper.Add(file);
+            
             carImage.ImagePath = pathResult.Message;
+        
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.ImagesAdded);
 
@@ -51,6 +53,7 @@ namespace Business.Concrete
             var result = _carImageDal.Get(c => c.Id == carImage.Id);
             var result1 = FileHelper.Update(file, result.ImagePath);
             carImage.ImagePath = result1.Message;
+            //carImage.ImagePath = file.Files.FileName;
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult();
