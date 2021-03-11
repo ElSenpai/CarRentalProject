@@ -22,7 +22,7 @@ namespace Core.Utilities.FileUploads
 
                var guidName = Guid.NewGuid().ToString();
               var  type = Path.GetExtension(file.Files.FileName);
-
+                
                 using (FileStream filestream = File.Create(currentDirectory + path + guidName + type))
                 {
 
