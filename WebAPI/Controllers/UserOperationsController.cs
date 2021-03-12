@@ -25,10 +25,10 @@ namespace WebAPI.Controllers
             var result = _uOperationService.Add(operation);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpPost("delete")]
@@ -37,9 +37,9 @@ namespace WebAPI.Controllers
             var result = _uOperationService.Delete(operation);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
         [HttpPut("update")]
@@ -48,9 +48,9 @@ namespace WebAPI.Controllers
             var result = _uOperationService.Update(operation);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -58,9 +58,9 @@ namespace WebAPI.Controllers
             var result = _uOperationService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
     }
 }

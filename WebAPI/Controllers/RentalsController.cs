@@ -24,10 +24,10 @@ namespace WebAPI.Controllers
             var result = _rentalService.Rent(rental);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpPost("delete")]
         public IActionResult Delete(Rental rental)
@@ -35,9 +35,9 @@ namespace WebAPI.Controllers
             var result = _rentalService.Delete(rental);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
         [HttpPut("update")]
@@ -46,9 +46,9 @@ namespace WebAPI.Controllers
             var result = _rentalService.Update(rental);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -56,9 +56,9 @@ namespace WebAPI.Controllers
             var result = _rentalService.GetAllRentals();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
@@ -66,7 +66,7 @@ namespace WebAPI.Controllers
             var result = _rentalService.GetByRentId(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -76,9 +76,9 @@ namespace WebAPI.Controllers
             var result = _rentalService.GetRentalDetailDtos();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
     }
 }
