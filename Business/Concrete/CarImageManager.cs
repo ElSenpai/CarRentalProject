@@ -53,9 +53,7 @@ namespace Business.Concrete
             var result = _carImageDal.Get(c => c.Id == carImage.Id);
             var result1 = FileHelper.Update(file, result.ImagePath);
             carImage.ImagePath = result1.Message;
-            //carImage.ImagePath = file.Files.FileName;
-            carImage.Date = DateTime.Now;
-            _carImageDal.Update(carImage);
+           _carImageDal.Update(carImage);
             return new SuccessResult();
         }
 
@@ -79,10 +77,17 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(b=>b.Id==id));
         }
+        public IDataResult<List<CarImage>> GetByCarId(int id)
+        {
+            var result = _carImageDal.GetAll(c => c.CarId == id);
+           
+            return new SuccessDataResult<List<CarImage>>(result);
+        }
 
-        
 
-        
+
+
+
 
         private IResult CheckCarIMageAmount(int CarId)
         {
