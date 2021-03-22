@@ -30,7 +30,8 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  CarId = c.Id,
                                  
-                                 BrandName = b.BrandName+" "+c.CarName,
+                                 BrandModel =c.CarName,
+                                 BrandName =b.BrandName,
                                  ColorName = o.ColorName,
                                  DailyPrice = c.DailyPrice,
                                  

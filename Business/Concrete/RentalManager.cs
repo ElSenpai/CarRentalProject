@@ -18,9 +18,11 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        public RentalManager(IRentalDal rentalDal)
+        
+        public RentalManager(IRentalDal rentalDal )
         {
             _rentalDal = rentalDal;
+            
         }
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Rent(Rental rental)
@@ -31,6 +33,7 @@ namespace Business.Concrete
             {
                 return result;
             }
+           
 
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.Rented);
@@ -77,10 +80,11 @@ namespace Business.Concrete
                     return new ErrorResult(Messages.ReturnDateNull);
                 }
             }
-
+return new SuccessResult();
            
-            return new SuccessResult();
+            
         }
+       
 
 
     }

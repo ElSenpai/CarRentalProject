@@ -16,7 +16,7 @@ using System.Threading;
 
 namespace Business.Concrete
 {
-   public class CarManager : ICarService
+    public class CarManager : ICarService
     {
         
          ICarDal _carDal;
@@ -79,6 +79,16 @@ namespace Business.Concrete
         {
             _carDal.Update(car);
             return new SuccessResult(Messages.Updated);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetColorBrandId(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == brandId && c.ColorId==colorId));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDtoById(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.Id==carId));
         }
     }
 }
