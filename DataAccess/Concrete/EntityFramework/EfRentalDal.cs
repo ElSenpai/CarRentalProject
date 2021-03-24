@@ -21,7 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join br in context.Brands
                              on c.BrandId equals br.Id
                              join u in context.Users
-                             on r.Id equals u.Id
+                             on r.CustomerId equals u.Id
                              join co in context.Customers
                              on r.CustomerId equals co.UserId
                              select new RentalDetailDto

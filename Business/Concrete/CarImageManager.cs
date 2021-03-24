@@ -9,10 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace Business.Concrete
 {
-   public class CarImageManager : ICarImageService
+    public class CarImageManager : ICarImageService
     {
         private ICarImageDal _carImageDal;
 
@@ -31,13 +32,13 @@ namespace Business.Concrete
             }
 
             var pathResult = FileHelper.Add(file);
-            
+
             carImage.ImagePath = pathResult.Message;
-        
+
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.ImagesAdded);
 
-            
+
         }
 
         public IResult Delete(CarImage carImage)
@@ -53,7 +54,7 @@ namespace Business.Concrete
             var result = _carImageDal.Get(c => c.Id == carImage.Id);
             var result1 = FileHelper.Update(file, result.ImagePath);
             carImage.ImagePath = result1.Message;
-           _carImageDal.Update(carImage);
+            _carImageDal.Update(carImage);
             return new SuccessResult();
         }
 
@@ -68,19 +69,28 @@ namespace Business.Concrete
         public IDataResult<List<CarImage>> GetById(int id)
         {
             var result = _carImageDal.Get(c => c.Id == id);
-            if (result.ImagePath==null)
+            if (result.ImagePath == null)
             {
                 List<CarImage> Cimage = new List<CarImage>();
-                Cimage.Add(new CarImage { CarId = id, ImagePath = @"\images\Default.jpg" });
+                Cimage.Add(new CarImage { CarId = id, ImagePath = @"\Default.jpg" });
                 return new SuccessDataResult<List<CarImage>>(Cimage);
 
             }
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(b=>b.Id==id));
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(b => b.Id == id));
         }
         public IDataResult<List<CarImage>> GetByCarId(int id)
         {
             var result = _carImageDal.GetAll(c => c.CarId == id);
-           
+
+
+            if (!result.Any())
+            {
+
+                return new SuccessDataResult<List<CarImage>>
+                    (new List<CarImage> { new CarImage { CarId = id, ImagePath = "Default.jpg" } });
+
+            }
+
             return new SuccessDataResult<List<CarImage>>(result);
         }
 
