@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update(Brand brand)
         {
             var result = _brandService.Update(brand);
