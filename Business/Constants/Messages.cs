@@ -40,5 +40,12 @@ namespace Business.Constants
         public static string ImagesAdded = "Görüntü Eklendi";
         public static string ImagesCantAdded = "Ekleme başarısız";
         public static string TransactionTested = "Transaction test edildi";
+        public static string FindeksSuccess = "Findeks Puanı yeterli";
+        public static string FindeksFail = "Yetersiz Findeks";
+        public static string OrderAdd = "Ödeme Alındı";
+        public static string OrderUpdate = "Ödeme Güncellendi";
+        public static string OrderDelete = "Ödeme İptal Edildi";
     }
 }
+
+

@@ -28,7 +28,7 @@ namespace Business.Concrete
 
             if (result != null)
             {
-                return new ErrorResult(Messages.ImagesCantAdded);
+                return result;
             }
 
             var pathResult = FileHelper.Add(file);

@@ -18,16 +18,20 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
+        ICustomerService _customerService;
+        ICarService _carService;
         
-        public RentalManager(IRentalDal rentalDal )
+        public RentalManager(IRentalDal rentalDal ,ICustomerService customerService,ICarService carService)
         {
             _rentalDal = rentalDal;
+            _customerService = customerService;
+            _carService = carService;
             
         }
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Rent(Rental rental)
         {
-            IResult result = BusinessRules.Run(CheckCarReturnDate(rental));
+            IResult result = BusinessRules.Run(CheckCarReturnDate(rental), CheckFindeks(rental.CarId,rental.CustomerId));
 
             if (result !=null)
             {
@@ -80,8 +84,19 @@ namespace Business.Concrete
                     return new ErrorResult(Messages.ReturnDateNull);
                 }
             }
-return new SuccessResult();
+          return new SuccessResult();
            
+            
+        }
+        private IResult CheckFindeks(int carFindeks,int customerFindeks)
+        {
+            var customerFin = _customerService.Findeks(customerFindeks);
+            var carFin = _carService.Findeks(carFindeks);
+            if (carFin.Data>customerFin.Data)
+            {
+                return new ErrorResult(Messages.FindeksFail);
+            }
+            return new SuccessResult(Messages.FindeksSuccess);
             
         }
        

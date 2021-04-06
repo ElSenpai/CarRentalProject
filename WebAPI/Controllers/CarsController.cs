@@ -114,7 +114,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpGet("getbrandcolorid")]
-        public IActionResult GetBrandColorId(int brandId,int colorId)
+        public IActionResult GetBrandColorId(int? brandId,int? colorId)
         {
             var result = _carService.GetColorBrandId(brandId, colorId);
             if (result.Success)

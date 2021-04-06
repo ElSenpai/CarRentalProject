@@ -81,7 +81,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Updated);
         }
 
-        public IDataResult<List<CarDetailDto>> GetColorBrandId(int brandId, int colorId)
+        public IDataResult<List<CarDetailDto>> GetColorBrandId(int? brandId, int? colorId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == brandId && c.ColorId==colorId));
         }
@@ -89,6 +89,12 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDtoById(int carId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.Id==carId));
+        }
+
+        public IDataResult<int> Findeks(int carId)
+        {
+            var result = _carDal.Get(c => c.Id == carId);
+            return new SuccessDataResult<int>(result.MinFindeks);
         }
     }
 }

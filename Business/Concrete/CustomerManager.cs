@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -52,6 +53,12 @@ namespace Business.Concrete
         {
             _customerDal.Update(customer);
             return new SuccessResult(Messages.Updated);
+        }
+
+        public IDataResult<int> Findeks(int cusId)
+        {
+            var result = _customerDal.Get(c => c.Id == cusId);
+            return new SuccessDataResult<int>(result.Findeks);
         }
     }
 }

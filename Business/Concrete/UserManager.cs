@@ -53,6 +53,8 @@ namespace Business.Concrete
             var getClaims = _userDal.GetClaims(user);
             return new SuccessDataResult<List<OperationClaim>>(getClaims);
         }
+      
+
         public IDataResult<User> GetByMail(string email)
         {
             var getByMail = _userDal.Get(u => u.Email == email);

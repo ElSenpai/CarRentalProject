@@ -20,6 +20,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
+
+
         public IResult Delete(Card card)
         {
             _cardDal.Delete(card);
@@ -33,18 +35,28 @@ namespace Business.Concrete
 
         public IDataResult<Card> GetByCustomerId(int id)
         {
-            return new SuccessDataResult<Card>(_cardDal.Get(c => c.CustomerId==id));
+            return new SuccessDataResult<Card>(_cardDal.Get(c => c.CustomerId == id));
         }
+
+
 
         public IResult Update(Card card)
         {
             _cardDal.Update(card);
             return new SuccessResult(Messages.Updated);
         }
-       public IDataResult<Card> GetbyCardNumber(string cardNumber)
+        public IDataResult<Card> GetbyCardNumber(string cardNumber)
         {
-            var getCardNumber = _cardDal.Get(u => u.CardNumber == cardNumber);
-            return new SuccessDataResult<Card>(getCardNumber);
+            var result = _cardDal.Get(c => c.CardNumber == cardNumber);
+            if (result.CardNumber == cardNumber)
+            {
+                return new SuccessDataResult<Card>("işlem gerçekleşti");
+            }
+            
+            return new ErrorDataResult<Card>("Eşleşmeyen CardNumber");
+
         }
+
+
     }
 }

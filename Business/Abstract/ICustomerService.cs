@@ -19,5 +19,6 @@ namespace Business.Abstract
 
         IDataResult<Customer> GetByCustomerId(int id);
         IDataResult<List<Customer>> GetAllCustomers();
+        IDataResult<int> Findeks(int cusId);
     }
 }
