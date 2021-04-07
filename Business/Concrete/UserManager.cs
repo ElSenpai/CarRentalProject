@@ -4,8 +4,10 @@ using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Core.Utilities.Security.Hashing;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,9 +44,28 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(u=>u.Id==id), Messages.UserListed);
         }
 
-        public IResult Update(User user)
+        public IResult Update(User user,string password)
         {
             
+            var result = _userDal.Get(c=>c.Id==user.Id);
+
+            user.PasswordHash = result.PasswordHash;
+            user.PasswordSalt = result.PasswordSalt;
+            user.Status = result.Status;
+            if (user.FirstName == null)
+            { user.FirstName = result.FirstName; }
+           if(user.LastName == null )
+            { user.LastName = result.LastName; }
+            if (user.Email == null )
+              {user.Email = result.Email; }
+            if(password != "null")
+            {
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+            }
+           
             _userDal.Update(user);
             return new SuccessResult(Messages.Updated);
         }

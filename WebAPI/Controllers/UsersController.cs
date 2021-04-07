@@ -41,10 +41,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpPut("update")]
-        public IActionResult Update(User user)
+        [HttpPost("update")]
+        public IActionResult Update([FromBody]User user,string password)
         {
-            var result = _userService.Update(user);
+            var result = _userService.Update(user,password);
             if (result.Success)
             {
                 return Ok(result);
