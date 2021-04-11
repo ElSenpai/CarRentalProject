@@ -1,4 +1,4 @@
-<h1>** Frontend için olası değişiklikler</h1>
+<h1>** Frontend için gerekli değişiklikler</h1>
 
 <h3> Findeks kontrolü</h3>
 
