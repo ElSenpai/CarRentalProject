@@ -14,10 +14,12 @@ namespace WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private IAuthService _authService;
+        
 
         public AuthController(IAuthService authService)
         {
             _authService = authService;
+            
         }
 
         [HttpPost("login")]

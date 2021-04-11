@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost("update")]
-        public IActionResult Update([FromBody]User user,string password)
+        public IActionResult Update(User user,string password)
         {
             var result = _userService.Update(user,password);
             if (result.Success)

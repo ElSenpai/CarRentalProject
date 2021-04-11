@@ -4,6 +4,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,15 @@ namespace Business.Concrete
     {
         private IUserService _userService;
         private ITokenHelper _tokenHelper;
+        private ICustomerService _customerService;
+        private IUserOperationService _userOperationService;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, IUserOperationService userOperationService, ICustomerService customerService)
         {
+            _customerService = customerService;
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _userOperationService = userOperationService;
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
@@ -36,6 +41,9 @@ namespace Business.Concrete
                 Status = true
             };
             _userService.Add(user);
+            _userOperationService.Add(new UserOperationClaim { OperationClaimId = 2, UserId = user.Id });
+            _customerService.Add(new Customer { UserId = user.Id, Findeks = 500, CompanyName = user.LastName + " Company" });
+
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
