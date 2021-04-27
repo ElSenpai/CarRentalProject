@@ -2,7 +2,35 @@
 
 <h3> Findeks kontrolü</h3>
 
-<img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h1.png" width="800" alt="main">
+```c#
+ private IResult CheckFindeks(int carFindeks,int customerFindeks)
+        {
+            var customerFin = _customerService.Findeks(customerFindeks);
+            var carFin = _carService.Findeks(carFindeks);
+            if (carFin.Data>customerFin.Data)
+            {
+                return new ErrorResult(Messages.FindeksFail);
+            }
+            return new SuccessResult(Messages.FindeksSuccess);
+            
+        }
+ public IDataResult<int> Findeks(int cusId)
+        {
+            var result = _customerDal.Get(c => c.Id == cusId);
+            return new SuccessDataResult<int>(result.Findeks);
+        }
+  public IDataResult<int> Findeks(int carId)
+        {
+            var result = _carDal.Get(c => c.Id == carId);
+            return new SuccessDataResult<int>(result.MinFindeks);
+        }
+        
+    public CustomerValidator()
+        {
+            RuleFor(cu => cu.CompanyName).NotEmpty();
+            RuleFor(cu => cu.Findeks).InclusiveBetween(0, 1900);
+        }     
+```
 
 <img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h2.png" width="800" alt="main">
 
