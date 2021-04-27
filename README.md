@@ -1,6 +1,6 @@
-<h1>** Frontend için gerekli değişiklikler</h1>
+# Frontend için gerekli değişiklikler
 
-<h3> Findeks kontrolü</h3>
+* Findeks kontrolü
 
 ```c#
  private IResult CheckFindeks(int carFindeks,int customerFindeks)
@@ -66,19 +66,39 @@
  ```
 
 
-<img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h6.png" width="800" alt="main">
 
-<h1> Fake Kart </h3>
-<h3> - Fake kart için Service oluşturuldu </h1>
+
+# Fake Kart 
+* Fake kart için Service oluşturuldu 
 
 <img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h4.png" width="800" alt="main">
 
-<h1> Register Sırasında değişiklikler </h3>
-<h3> - Register olunca kullanıcı user claimi kazanıp Customer haline geliyor  </h1>
+# Register Sırasında değişiklikler
+* Register olunca kullanıcı user claimi kazanıp Customer haline geliyor
+[AuthManager](https://github.com/ElSenpai/CarRentalProject/blob/master/Business/Concrete/AuthManager.cs)
+```c#
+ public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
+        {
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            var user = new User
+            {
+                Email = userForRegisterDto.Email,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            _userService.Add(user);
+            _userOperationService.Add(new UserOperationClaim { OperationClaimId = 2, UserId = user.Id });
+            _customerService.Add(new Customer { UserId = user.Id, Findeks = 500, CompanyName = user.LastName + " Company" });
 
-<img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h3.png" width="800" alt="main">
+            return new SuccessDataResult<User>(user, Messages.UserRegistered);
+        }
+```
 
-<h1> Filtreleme için Eklenen Operasyonlar </h3>
+# Filtreleme için Eklenen Operasyonlar
 
 ![some](https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h5.png)
 
