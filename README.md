@@ -63,7 +63,7 @@
             return new SuccessResult(Messages.Updated);
         }
         
-        ```
+ ```
 
 
 <img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h6.png" width="800" alt="main">
@@ -80,6 +80,8 @@
 
 <h1> Filtreleme için Eklenen Operasyonlar </h3>
 
+![some](https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h5.png)
 
-<img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h5.png" width="800" alt="main">
+
+[El Senpai](https://github.com/ElSenpai/)
 
