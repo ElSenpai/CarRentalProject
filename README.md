@@ -34,8 +34,37 @@
 
 
 
-<h1> User Update </h3>
-<h3> - User operasyonları Auth service e uygun hale getirildi </h1>
+# User Update
+* User operasyonları Auth service e uygun hale getirildi
+```C#
+ public IResult Update(User user,string password)
+        {
+            
+            var result = _userDal.Get(c=>c.Id==user.Id);
+
+            user.PasswordHash = result.PasswordHash;
+            user.PasswordSalt = result.PasswordSalt;
+            user.Status = result.Status;
+            if (user.FirstName == null)
+            { user.FirstName = result.FirstName; }
+           if(user.LastName == null )
+            { user.LastName = result.LastName; }
+            if (user.Email == null )
+              {user.Email = result.Email; }
+            if(password != "null")
+            {
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+            }
+           
+            _userDal.Update(user);
+            return new SuccessResult(Messages.Updated);
+        }
+        
+        ```
+
 
 <img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h6.png" width="800" alt="main">
 
