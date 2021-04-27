@@ -32,7 +32,7 @@
         }     
 ```
 
-<img src="https://github.com/ElSenpai/Rental-oldVersion/blob/master/src/assets/img/h2.png" width="800" alt="main">
+
 
 <h1> User Update </h3>
 <h3> - User operasyonları Auth service e uygun hale getirildi </h1>
