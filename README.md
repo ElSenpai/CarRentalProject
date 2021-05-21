@@ -1,7 +1,7 @@
 # CarRental Project - Backend
 
 
-##Technologies and Techniques Used in the Project
+## Technologies and Techniques Used in the Project
 
 * .NET
 * ASP.NET 
@@ -14,7 +14,7 @@
 * FileUpload
 * Aspects
 
-###Aspects
+### Aspects
 * Caching
 * Performance
 * Transaction
